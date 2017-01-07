@@ -26,6 +26,8 @@ public class DotMoveAnimation : MonoBehaviour
     private GameObject bagObj;
     private GameObject pleaseBoadPanelObj;
     private bool bagOpenFlg;
+    private AudioSource touch;
+    private AudioSource talk;
 
     // Use this for initialization
     void Start()
@@ -116,8 +118,10 @@ public class DotMoveAnimation : MonoBehaviour
 		Debug.Log ("Avator/" + characterBgNames[characterId]);
 		GameObject.Find ("BackGround").GetComponent<RawImage> ().texture = Resources.Load<Texture> ("Avator/" + characterBgNames[characterId]);
 		GameObject.Find("BackGround").GetComponent<RawImage>().uvRect = new Rect(0.0f, 0.0f, 0.5f, 1.0f);
-
-	}
+        AudioSource[] audioSources = GameObject.Find("EventSystem").GetComponents<AudioSource>();
+        touch = audioSources[0];
+        talk = audioSources[1];
+    }
 
     // Update is called once per frame
     void Update() {
@@ -135,7 +139,7 @@ public class DotMoveAnimation : MonoBehaviour
             RectTransform leftpos = GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>();
             talkPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(talkpos.localPosition.x - 5.0f, talkpos.localPosition.y, talkpos.localPosition.z);
             charaPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(charapos.localPosition.x - 5.0f, charapos.localPosition.y, charapos.localPosition.z);
-            GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>().localPosition = new Vector3(leftpos.localPosition.x - 5.0f, leftpos.localPosition.y, leftpos.localPosition.z);
+            GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>().localPosition = new Vector3(leftpos.localPosition.x - 6.0f, leftpos.localPosition.y, leftpos.localPosition.z);
             if (GameObject.Find("BackGround").GetComponent<RawImage>().uvRect.x > 0.5f) {
                 talkPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(-486.0f, talkpos.localPosition.y, talkpos.localPosition.z);
                 charaPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(-375.0f, charapos.localPosition.y, charapos.localPosition.z);
@@ -169,7 +173,7 @@ public class DotMoveAnimation : MonoBehaviour
             RectTransform leftpos = GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>();
             talkPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(talkpos.localPosition.x + 5.0f, talkpos.localPosition.y, talkpos.localPosition.z);
             charaPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(charapos.localPosition.x + 5.0f, charapos.localPosition.y, charapos.localPosition.z);
-            GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>().localPosition = new Vector3(leftpos.localPosition.x + 5.0f, leftpos.localPosition.y, leftpos.localPosition.z);
+            GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>().localPosition = new Vector3(leftpos.localPosition.x + 6.0f, leftpos.localPosition.y, leftpos.localPosition.z);
             if (GameObject.Find("BackGround").GetComponent<RawImage>().uvRect.x <= 0.0f) {
                 talkPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(13.0f, talkpos.localPosition.y, talkpos.localPosition.z);
                 charaPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(125.0f, charapos.localPosition.y, charapos.localPosition.z);
@@ -193,9 +197,14 @@ public class DotMoveAnimation : MonoBehaviour
 		GameObject charaface = GameObject.Find ("CharaFace");
 		charaface.GetComponent<Image>().sprite = ps;
 		charaface.GetComponent<RectTransform> ().sizeDelta = new Vector2 (ps.bounds.size.x * 100, ps.bounds.size.y * 100);
-
+        if (touch != null) {
+            touch.PlayOneShot(touch.clip);
+        }
         talkPanelObj.SetActive(false);
         if (rnd_value >= 0.3f) {
+            if (talk != null) {
+                talk.PlayOneShot(talk.clip);
+            }
             Invoke("OpenTalkBox", 0.1f);
         } 
 
