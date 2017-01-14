@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PleaseBoadEvent : MonoBehaviour
 {
+
     Dictionary<int, Dictionary<int, string>> itemNameList = new Dictionary<int, Dictionary<int, string>>()
         {
             {1, new Dictionary<int,string> {
@@ -57,10 +58,10 @@ public class PleaseBoadEvent : MonoBehaviour
            img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + itemNameList[UserPlayData.Instance.selectCharacterId][i]);
         }
         pleaseWindow.SetActive (false);
-	}
+    }
 
 
-	public void OpenWindowButtonClick(int itemId) {
+    public void OpenWindowButtonClick(int itemId) {
         
         Image img = pleaseWindow.transform.FindChild("SelectItem").GetComponent<Image>();
         img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + itemNameList[UserPlayData.Instance.selectCharacterId][itemId]);
@@ -72,12 +73,12 @@ public class PleaseBoadEvent : MonoBehaviour
 	}
 
 	public void YesButtonClick() {
-		pleaseWindow.SetActive (false);
+        pleaseWindow.SetActive (false);
 	}
 
 	public void OnClick()
 	{
-		StartCoroutine("MainStart");
+        StartCoroutine("MainStart");
 	}
 
 	IEnumerator MainStart()

@@ -29,6 +29,7 @@ public class DotMoveAnimation : MonoBehaviour
     private AudioSource touch;
     private AudioSource talk;
 
+
     // Use this for initialization
     void Start()
     {

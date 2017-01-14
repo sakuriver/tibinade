@@ -6,15 +6,17 @@ public class CharacterSelectSceneAction : MonoBehaviour
 {
 
 	public string selectCharacterPanelName = "";
+    public SePlayer sePlayer;
 
 
-	public void OnCharacterPointerUp(string selectPanelLabel)
+    public void OnCharacterPointerUp(string selectPanelLabel)
 	{
 		unSelectColor();
 		char[] delimiterChars = {'#'};
 		string[] updateInfo = selectPanelLabel.Split (delimiterChars, System.StringSplitOptions.None);
-		if (this.GetComponent<MainSceneLoad> ().selectColorList.ContainsKey(int.Parse(updateInfo[1]))) { 
-			selectColor (updateInfo);
+		if (this.GetComponent<MainSceneLoad> ().selectColorList.ContainsKey(int.Parse(updateInfo[1]))) {
+            sePlayer.onClickSe();
+            selectColor(updateInfo);
 		}
 	}
 

@@ -5,8 +5,12 @@ using System.Collections;
 public class PleaseBoadSceneLoad : MonoBehaviour
 {
 
+    public SePlayer sePlayer;
+
+
     public void OnClick()
     {
+        sePlayer.onClickSe();
         StartCoroutine("PleaseBoadScene");
     }
 

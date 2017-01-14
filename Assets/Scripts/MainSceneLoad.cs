@@ -8,8 +8,10 @@ public class MainSceneLoad : MonoBehaviour
 	// Todo 通信が完成したら、色の切り替え処理はサーバーから取得するように変更する
 	public Dictionary<int, Color> defaultColorList;
 	public Dictionary<int, Color> selectColorList;
+    public SePlayer sePlayer;
 
-	void Start() {
+
+    void Start() {
 		Debug.Log (UserPlayData.Instance.selectCharacterId);
 		defaultColorList = new Dictionary<int, Color> ();
 		selectColorList = new Dictionary<int, Color> ();
@@ -30,6 +32,7 @@ public class MainSceneLoad : MonoBehaviour
 
     public void OnClick()
     {
+        sePlayer.onClickSe();
         StartCoroutine("MainStart");
     }
 

@@ -5,8 +5,12 @@ using System.Collections;
 public class CharaSelectSceneLoad : MonoBehaviour
 {
 
+    public SePlayer sePlayer;
+
+
     public void OnClick()
     {
+        sePlayer.onClickSe();
         StartCoroutine("CharaSelectStart");
     }
 
