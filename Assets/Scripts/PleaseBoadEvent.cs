@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class PleaseBoadEvent : MonoBehaviour
 {
-
-    Dictionary<int, Dictionary<int, string>> itemNameList = new Dictionary<int, Dictionary<int, string>>()
+    public UserGamePlayData userGamePlayData;
+    public Dictionary<int, Dictionary<int, string>> itemNameList = new Dictionary<int, Dictionary<int, string>>()
         {
             {1, new Dictionary<int,string> {
                 {1, "ONluklukEicon"},
@@ -65,14 +65,21 @@ public class PleaseBoadEvent : MonoBehaviour
         
         Image img = pleaseWindow.transform.FindChild("SelectItem").GetComponent<Image>();
         img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + itemNameList[UserPlayData.Instance.selectCharacterId][itemId]);
+        userGamePlayData.pleaseCharacterId = UserPlayData.Instance.selectCharacterId;
+        userGamePlayData.pleaseItemId = itemId;
+
         pleaseWindow.SetActive(true);
 	}
 
 	public void NoButtonClick() {
+        userGamePlayData.pleaseCommandFlg = false;
 		pleaseWindow.SetActive (false);
 	}
 
 	public void YesButtonClick() {
+        userGamePlayData.pleaseCommandFlg = true;
+        userGamePlayData.pleaseCompleteTime = System.DateTime.Now;
+        userGamePlayData.pleaseCompleteTime = userGamePlayData.pleaseCompleteTime.Add(new System.TimeSpan(2, 10, 40));
         pleaseWindow.SetActive (false);
 	}
 
