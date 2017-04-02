@@ -67,7 +67,13 @@ public class PleaseBoadEvent : MonoBehaviour
         img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + itemNameList[UserPlayData.Instance.selectCharacterId][itemId]);
         userGamePlayData.pleaseCharacterId = UserPlayData.Instance.selectCharacterId;
         userGamePlayData.pleaseItemId = itemId;
-
+        if (userGamePlayData.userCharacterData == null) {
+            userGamePlayData.userCharacterData = new Dictionary<int, UserCharacterData>();
+        }
+        if (!userGamePlayData.userCharacterData.ContainsKey(userGamePlayData.pleaseCharacterId)) {
+            userGamePlayData.userCharacterData.Add(userGamePlayData.pleaseCharacterId, new UserCharacterData());
+            userGamePlayData.userCharacterData[userGamePlayData.pleaseCharacterId].itemCountTable = new Dictionary<int, int>();
+        }
         pleaseWindow.SetActive(true);
 	}
 
@@ -79,7 +85,7 @@ public class PleaseBoadEvent : MonoBehaviour
 	public void YesButtonClick() {
         userGamePlayData.pleaseCommandFlg = true;
         userGamePlayData.pleaseCompleteTime = System.DateTime.Now;
-        userGamePlayData.pleaseCompleteTime = userGamePlayData.pleaseCompleteTime.Add(new System.TimeSpan(2, 10, 40));
+        userGamePlayData.pleaseCompleteTime = userGamePlayData.pleaseCompleteTime.Add(new System.TimeSpan(0, 0, 20));
         pleaseWindow.SetActive (false);
 	}
 
