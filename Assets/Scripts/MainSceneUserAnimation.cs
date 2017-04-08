@@ -9,6 +9,7 @@ public class MainSceneUserAnimation : MonoBehaviour
 {
 
     public GameObject pleaseBoardRoot;
+    public GameObject pleaseBoardCompleteRoot;
     public Text pleaseTimeText;
     public Image pleaseItemIcon;
     public UserGamePlayData userGamePlayData;
@@ -62,10 +63,14 @@ public class MainSceneUserAnimation : MonoBehaviour
                 }
                 Debug.Log("count:" + userGamePlayData.userCharacterData[pleaseCharacterId].itemCountTable[pleaseItemId]);
                 userGamePlayData.pleaseCommandFlg = false;
-
+                pleaseBoardCompleteRoot.SetActive(true);
             }
             pleaseBoardRoot.SetActive(pleaseTimeTextEnabled);
         }
+    }
+
+    public void OnPleaseBoardCompleteCloseClick() {
+        pleaseBoardCompleteRoot.SetActive(false);
     }
 
 }
