@@ -53,9 +53,32 @@ public class PleaseBoadEvent : MonoBehaviour
 
 	void Start() {
 		pleaseWindow = GameObject.Find("PleaseWindow");
+        var characterId = UserPlayData.Instance.selectCharacterId;
         for (int i = 1; i < 5; i++) {
-           Image img = GameObject.Find("ItemObj" + i).gameObject.transform.FindChild("Icon").GetComponent<Image>();
+           GameObject itemObjectRoot = GameObject.Find("ItemObj" + i).gameObject;
+           Image img = itemObjectRoot.transform.FindChild("Icon").GetComponent<Image>();
            img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + itemNameList[UserPlayData.Instance.selectCharacterId][i]);
+           if (userGamePlayData.userCharacterData == null){
+                itemObjectRoot.transform.Find("OnegaiButton").gameObject.SetActive(true);
+                itemObjectRoot.transform.Find("DressChangeButton").gameObject.SetActive(false);
+                continue;
+           }
+           var characterDataCountFlg = userGamePlayData.userCharacterData.ContainsKey(characterId);
+           if (!characterDataCountFlg) {
+                itemObjectRoot.transform.Find("OnegaiButton").gameObject.SetActive(true);
+                itemObjectRoot.transform.Find("DressChangeButton").gameObject.SetActive(false);
+                continue;
+           }
+           var itemCountFlg = userGamePlayData.userCharacterData[characterId].itemCountTable.ContainsKey(i);
+           if (!itemCountFlg || userGamePlayData.userCharacterData[characterId].itemCountTable[i] < 0) {
+                itemObjectRoot.transform.Find("OnegaiButton").gameObject.SetActive(true);
+                itemObjectRoot.transform.Find("DressChangeButton").gameObject.SetActive(false);
+                continue;
+           } else {
+                itemObjectRoot.transform.Find("OnegaiButton").gameObject.SetActive(false);
+                itemObjectRoot.transform.Find("DressChangeButton").gameObject.SetActive(true);
+                continue;
+            }
         }
         pleaseWindow.SetActive (false);
     }
@@ -76,6 +99,10 @@ public class PleaseBoadEvent : MonoBehaviour
         }
         pleaseWindow.SetActive(true);
 	}
+
+    public void DressChangeButtonClick(int itemId) {
+        UserPlayData.Instance.selectItemId = itemId;
+    }
 
 	public void NoButtonClick() {
         userGamePlayData.pleaseCommandFlg = false;

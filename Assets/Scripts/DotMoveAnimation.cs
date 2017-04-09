@@ -116,7 +116,6 @@ public class DotMoveAnimation : MonoBehaviour
 		CharaMove();
 		CharaPoseChange ();
 		int characterId = UserPlayData.Instance.selectCharacterId;
-		Debug.Log ("Avator/" + characterBgNames[characterId]);
 		GameObject.Find ("BackGround").GetComponent<RawImage> ().texture = Resources.Load<Texture> ("Avator/" + characterBgNames[characterId]);
 		GameObject.Find("BackGround").GetComponent<RawImage>().uvRect = new Rect(0.0f, 0.0f, 0.5f, 1.0f);
         AudioSource[] audioSources = GameObject.Find("EventSystem").GetComponents<AudioSource>();
@@ -257,13 +256,15 @@ public class DotMoveAnimation : MonoBehaviour
 	private void CharaPoseChange() {
 		int poseValue = Random.Range (1, 5);
 		int characterId = UserPlayData.Instance.selectCharacterId;
+        int itemId = UserPlayData.Instance.selectItemId;
 		string poseName = string.Format ("{0:D2}", poseValue);
 		GameObject charaBody = GameObject.Find ("CharaBody");
 		GameObject charaFace = GameObject.Find ("CharaFace");
 		string characterName = characterNames [characterId];
-		Sprite ps = Resources.Load<Sprite> ("Avator/" + characterName  +"_body_A" + poseName);
-		Debug.Log ("Avator/" + characterName + "_body_" + poseName);
-		Vector2 selectFacePosition = charaPoseFacePositions [characterId] [poseValue];
+        string[] itemTypeList = new string [] { "A", "B", "C", "D"};
+        Debug.Log("Avator/" + characterName + "_body_" + itemTypeList[itemId] + poseName);
+		Sprite ps = Resources.Load<Sprite> ("Avator/" + characterName  +"_body_" + itemTypeList[itemId] + poseName);
+		Vector2 selectFacePosition = charaPoseFacePositions [characterId][poseValue];
 		charaBody.GetComponent<Image>().sprite = ps;
 		charaBody.GetComponent<RectTransform> ().sizeDelta = new Vector2 (ps.bounds.size.x * 100, ps.bounds.size.y * 100);
 		charaFace.GetComponent<RectTransform> ().localPosition = new Vector3 (selectFacePosition.x, selectFacePosition.y, charaFace.GetComponent<RectTransform> ().position.z);
