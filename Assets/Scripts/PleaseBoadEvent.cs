@@ -9,39 +9,41 @@ public class PleaseBoadEvent : MonoBehaviour
     public UserGamePlayData userGamePlayData;
     public Dictionary<int, Dictionary<int, string>> itemNameList = new Dictionary<int, Dictionary<int, string>>()
         {
-            {1, new Dictionary<int,string> {
+            {1, new Dictionary<int, string> {
                 {1, "ONluklukEicon"},
                 {2, "ONluklukBicon"},
                 {3, "ONluklukCicon"},
                 {4, "ONluklukDicon"},
-            }
+                }
             },
-            { 2, new Dictionary<int,string> {
-                {1, "ONluklukEicon"},
-                {2, "ONluklukBicon"},
-                {3, "ONluklukCicon"},
-                {4, "ONluklukDicon"},
-            }
+            { 2, new Dictionary<int, string> {
+                {1, "ONdieuleiconA"},
+                {2, "ONdieuleiconB"},
+                {3, "ONdieuleiconC"},
+                }
             },
-            { 3, new Dictionary<int,string> {
+            { 3, new Dictionary<int, string> {
                 {1, "OngelpiciconB"},
                 {2, "OngelpiciconC"},
                 {3, "OngelpiciconD"},
                 {4, "OngelpiciconE"},
+            }
+            },
+            { 4, new Dictionary<int, string> {
+                {1, "ONsroniconA"},
+                {2, "ONsroniconB"},
+                {3, "ONsroniconC"},
+                {4, "ONsroniconD"},
+                {5, "ONsroniconE"},
             } },
-            { 4, new Dictionary<int,string> {
-                {1, "ONsroniconB"},
-                {2, "ONsroniconC"},
-                {3, "ONsroniconD"},
-                {4, "ONsroniconE"},
+            { 5, new Dictionary<int, string> {
+                {1, "ONpameliconA"},
+                {2, "ONpameliconB"},
+                {3, "ONpameliconC"},
+                {4, "ONpameliconE"},
+                {5, "ONpameliconF"},
             } },
-            { 5, new Dictionary<int,string> {
-                {1, "ONpameliconB"},
-                {2, "ONpameliconC"},
-                {3, "ONpameliconE"},
-                {4, "ONpameliconF"},
-            } },
-            { 6, new Dictionary<int,string> {
+            { 6, new Dictionary<int, string> {
                 {1, "ONghigliaiconB" },
                 {2, "ONghigliaiconC" },
                 {3, "ONghigliaiconD" },
@@ -54,10 +56,21 @@ public class PleaseBoadEvent : MonoBehaviour
 	void Start() {
 		pleaseWindow = GameObject.Find("PleaseWindow");
         var characterId = UserPlayData.Instance.selectCharacterId;
-        for (int i = 1; i < 5; i++) {
+        Debug.Log(characterId.ToString());
+        Debug.Log(itemNameList.Keys.ToString());
+
+        var itemCount = itemNameList[characterId].Count;
+        for (int i = 1; i <= 4; i++) {
+
            GameObject itemObjectRoot = GameObject.Find("ItemObj" + i).gameObject;
+           if (i <= itemCount) {
+               itemObjectRoot.SetActive(true);
+           } else {
+               itemObjectRoot.SetActive(false);
+               continue;
+           }
            Image img = itemObjectRoot.transform.FindChild("Icon").GetComponent<Image>();
-           img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + itemNameList[UserPlayData.Instance.selectCharacterId][i]);
+           img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + itemNameList[characterId][i]);
            if (userGamePlayData.userCharacterData == null){
                 itemObjectRoot.transform.Find("OnegaiButton").gameObject.SetActive(true);
                 itemObjectRoot.transform.Find("DressChangeButton").gameObject.SetActive(false);
