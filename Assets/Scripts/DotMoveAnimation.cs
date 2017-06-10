@@ -133,13 +133,13 @@ public class DotMoveAnimation : MonoBehaviour
     void RightScrollAnimation()
     {
         if (rightScrollStartFlg) {
-            GameObject.Find("BackGround").GetComponent<RawImage>().uvRect = new Rect(GameObject.Find("BackGround").GetComponent<RawImage>().uvRect.x + 0.005f, 0.0f, 0.5f, 1.0f);
+            GameObject.Find("BackGround").GetComponent<RawImage>().uvRect = new Rect(GameObject.Find("BackGround").GetComponent<RawImage>().uvRect.x + 0.0075f, 0.0f, 0.5f, 1.0f);
             RectTransform charapos = charaPanelObj.GetComponent<RectTransform>();
             RectTransform talkpos = talkPanelObj.GetComponent<RectTransform>();
             RectTransform leftpos = GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>();
-            talkPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(talkpos.localPosition.x - 5.0f, talkpos.localPosition.y, talkpos.localPosition.z);
-            charaPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(charapos.localPosition.x - 5.0f, charapos.localPosition.y, charapos.localPosition.z);
-            GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>().localPosition = new Vector3(leftpos.localPosition.x - 6.0f, leftpos.localPosition.y, leftpos.localPosition.z);
+            talkPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(talkpos.localPosition.x - 7.5f, talkpos.localPosition.y, talkpos.localPosition.z);
+            charaPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(charapos.localPosition.x - 7.5f, charapos.localPosition.y, charapos.localPosition.z);
+            GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>().localPosition = new Vector3(leftpos.localPosition.x - 8.5f, leftpos.localPosition.y, leftpos.localPosition.z);
             if (GameObject.Find("BackGround").GetComponent<RawImage>().uvRect.x > 0.5f) {
                 talkPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(-486.0f, talkpos.localPosition.y, talkpos.localPosition.z);
                 charaPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(-375.0f, charapos.localPosition.y, charapos.localPosition.z);
@@ -167,13 +167,13 @@ public class DotMoveAnimation : MonoBehaviour
     void LeftScrollAnimation()
     {
         if (leftScrollStartFlg) {
-            GameObject.Find("BackGround").GetComponent<RawImage>().uvRect = new Rect(GameObject.Find("BackGround").GetComponent<RawImage>().uvRect.x - 0.005f, 0.0f, 0.5f, 1.0f);
+            GameObject.Find("BackGround").GetComponent<RawImage>().uvRect = new Rect(GameObject.Find("BackGround").GetComponent<RawImage>().uvRect.x - 0.0075f, 0.0f, 0.5f, 1.0f);
             RectTransform charapos = charaPanelObj.GetComponent<RectTransform>();
             RectTransform talkpos = talkPanelObj.GetComponent<RectTransform>();
             RectTransform leftpos = GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>();
-            talkPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(talkpos.localPosition.x + 5.0f, talkpos.localPosition.y, talkpos.localPosition.z);
-            charaPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(charapos.localPosition.x + 5.0f, charapos.localPosition.y, charapos.localPosition.z);
-            GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>().localPosition = new Vector3(leftpos.localPosition.x + 6.0f, leftpos.localPosition.y, leftpos.localPosition.z);
+            talkPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(talkpos.localPosition.x + 7.5f, talkpos.localPosition.y, talkpos.localPosition.z);
+            charaPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(charapos.localPosition.x + 7.5f, charapos.localPosition.y, charapos.localPosition.z);
+            GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>().localPosition = new Vector3(leftpos.localPosition.x + 8.5f, leftpos.localPosition.y, leftpos.localPosition.z);
             if (GameObject.Find("BackGround").GetComponent<RawImage>().uvRect.x <= 0.0f) {
                 talkPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(13.0f, talkpos.localPosition.y, talkpos.localPosition.z);
                 charaPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(125.0f, charapos.localPosition.y, charapos.localPosition.z);
