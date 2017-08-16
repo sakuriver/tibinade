@@ -116,11 +116,16 @@ public class DotMoveAnimation : MonoBehaviour
 		CharaMove();
 		CharaPoseChange ();
 		int characterId = UserPlayData.Instance.selectCharacterId;
-		GameObject.Find ("BackGround").GetComponent<RawImage> ().texture = Resources.Load<Texture> ("Avator/" + characterBgNames[characterId]);
-		GameObject.Find("BackGround").GetComponent<RawImage>().uvRect = new Rect(0.0f, 0.0f, 0.5f, 1.0f);
+        GameObject gameBg = GameObject.Find("BackGround");
         AudioSource[] audioSources = GameObject.Find("EventSystem").GetComponents<AudioSource>();
         touch = audioSources[0];
-        talk = audioSources[1];
+
+        if (talkPanelObj != null)
+        {
+            gameBg.GetComponent<RawImage>().texture = Resources.Load<Texture>("Avator/" + characterBgNames[characterId]);
+            gameBg.GetComponent<RawImage>().uvRect = new Rect(0.0f, 0.0f, 0.5f, 1.0f);
+            talk = audioSources[1];
+        }
     }
 
     // Update is called once per frame
@@ -200,7 +205,9 @@ public class DotMoveAnimation : MonoBehaviour
         if (touch != null) {
             touch.PlayOneShot(touch.clip);
         }
-        talkPanelObj.SetActive(false);
+        if (talkPanelObj != null){
+            talkPanelObj.SetActive(false);
+        }
         if (rnd_value >= 0.3f) {
             if (talk != null) {
                 talk.PlayOneShot(talk.clip);
@@ -213,12 +220,14 @@ public class DotMoveAnimation : MonoBehaviour
     }
 
     private void OpenTalkBox() {
+        if (talkPanelObj == null) {
+            return;
+        }
         talkPanelObj.SetActive(true);
 		int characterId = UserPlayData.Instance.selectCharacterId;
 		string textNumber = string.Format("{0:D2}", Random.Range (1, characterTexts[characterId]));
 		string characterName = characterNames [characterId];
 		Sprite ps = Resources.Load<Sprite> ("Avator/" + characterName  +"_text_" + textNumber); 
-		Debug.Log ("Avator/" + characterName  +"_text_" + textNumber);
 		GameObject.Find("TalkLine").GetComponent<Image>().sprite = ps;
         talkPanelObj.transform.DOShakeScale(0.15f, 0.15f);
     }

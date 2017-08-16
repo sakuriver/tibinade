@@ -16,7 +16,9 @@ public class MainSceneUserAnimation : MonoBehaviour
 
     public void Start(){
         var pleaseBoardFlg = userGamePlayData != null && userGamePlayData.pleaseCommandFlg;
-        pleaseBoardRoot.SetActive(pleaseBoardFlg);
+        if (pleaseBoardRoot != null) {
+            pleaseBoardRoot.SetActive(pleaseBoardFlg);
+        }
         if (userGamePlayData.pleaseCommandFlg) {
             PleaseBoadEvent pEvent = new PleaseBoadEvent();
             pleaseItemIcon.sprite = Resources.Load<Sprite>("OnegaiIcon/" + pEvent.itemNameList[userGamePlayData.pleaseCharacterId][userGamePlayData.pleaseItemId]);
