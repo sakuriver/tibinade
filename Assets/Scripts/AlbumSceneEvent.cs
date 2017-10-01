@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public class AlbumSceneEvent : MonoBehaviour {
 
     public GameObject CharaPanel;
@@ -19,6 +19,18 @@ public class AlbumSceneEvent : MonoBehaviour {
     {
         
         CharaPanel.GetComponent<DotMoveAnimation>().CharaMove();
+    }
+
+
+    public void OnClickBackButton()
+    {
+        StartCoroutine("MainStart");
+    }
+
+    IEnumerator MainStart()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("main");
     }
 
 
