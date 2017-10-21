@@ -15,11 +15,6 @@ public class AlbumSceneEvent : MonoBehaviour {
 	
 	}
 
-    public void PointerDown()
-    {
-        
-        CharaPanel.GetComponent<DotMoveAnimation>().CharaMove();
-    }
 
 
     public void OnClickBackButton()
