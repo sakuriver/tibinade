@@ -16,6 +16,7 @@ public class DotMoveAnimation : MonoBehaviour
     public Sprite bagCloseSprite;
     public bool rightScrollStartFlg;
     public bool leftScrollStartFlg;
+    public bool characterPoseFlg;
 	private Dictionary<int, Dictionary<int, Vector2>> charaPoseFacePositions;
 	private Dictionary<int, string> characterNames;
 	private Dictionary<int, string> characterBgNames;
@@ -193,9 +194,12 @@ public class DotMoveAnimation : MonoBehaviour
     }
 
     public void CharaMove() {
-        float rnd_value = Random.value;
-        
-		int characterId = UserPlayData.Instance.selectCharacterId;
+        float rndValue = Random.value;
+        if (characterPoseFlg && rndValue >= 0.8f ){
+            CharaPoseChange();
+        }
+
+        int characterId = UserPlayData.Instance.selectCharacterId;
 		string faceNumber = string.Format("{0:D2}", Random.Range (1, characterFaces[characterId]));
 		string characterName = characterNames [characterId];
 		Sprite ps = Resources.Load<Sprite> ("Avator/" + characterName  +"_face_" + faceNumber); 
@@ -208,12 +212,13 @@ public class DotMoveAnimation : MonoBehaviour
         if (talkPanelObj != null){
             talkPanelObj.SetActive(false);
         }
-        if (rnd_value >= 0.3f) {
+        if (rndValue >= 0.3f) {
             if (talk != null) {
                 talk.PlayOneShot(talk.clip);
             }
             Invoke("OpenTalkBox", 0.1f);
-        } 
+        }
+
 
         // 顔を変更させた後に、震えさせる
         charaPanel.transform.DOShakeScale(0.15f, 0.15f);
