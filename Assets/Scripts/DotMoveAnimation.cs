@@ -149,7 +149,7 @@ public class DotMoveAnimation : MonoBehaviour
             if (GameObject.Find("BackGround").GetComponent<RawImage>().uvRect.x > 0.5f) {
                 talkPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(-486.0f, talkpos.localPosition.y, talkpos.localPosition.z);
                 charaPanelObj.GetComponent<RectTransform>().localPosition = new Vector3(-375.0f, charapos.localPosition.y, charapos.localPosition.z);
-                GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>().localPosition = new Vector3(-180.0f, leftpos.localPosition.y, leftpos.localPosition.z);
+                GameObject.Find("LeftMenuPanel").GetComponent<RectTransform>().localPosition = new Vector3(-240.0f, leftpos.localPosition.y, leftpos.localPosition.z);
                 GameObject.Find("BackGround").GetComponent<RawImage>().uvRect = new Rect(0.5f, 0.0f, 0.5f, 1.0f);
                 rightScrollStartFlg = false;
                 rightScrollAllow.SetActive(false);
@@ -168,7 +168,7 @@ public class DotMoveAnimation : MonoBehaviour
             closeBag();
         }
     }
-
+    
 
     void LeftScrollAnimation()
     {
@@ -230,11 +230,15 @@ public class DotMoveAnimation : MonoBehaviour
         }
         talkPanelObj.SetActive(true);
 		int characterId = UserPlayData.Instance.selectCharacterId;
-		string textNumber = string.Format("{0:D2}", Random.Range (1, characterTexts[characterId]));
+        string textNumber = string.Format("{0:D2}", Random.Range(1, characterTexts[characterId]));
+        while (UserPlayData.Instance.pleasePrevCharacterTextNumber == textNumber) {
+            textNumber = string.Format("{0:D2}", Random.Range(1, characterTexts[characterId]));
+        }
 		string characterName = characterNames [characterId];
 		Sprite ps = Resources.Load<Sprite> ("Avator/" + characterName  +"_text_" + textNumber); 
 		GameObject.Find("TalkLine").GetComponent<Image>().sprite = ps;
         talkPanelObj.transform.DOShakeScale(0.15f, 0.15f);
+        UserPlayData.Instance.pleasePrevCharacterTextNumber = textNumber;
     }
 
     public void RightScroll() {
