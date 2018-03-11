@@ -28,5 +28,16 @@ public class AlbumSceneEvent : MonoBehaviour {
         SceneManager.LoadScene("main");
     }
 
+	public void OnClickDressChangeButton()
+	{
+		StartCoroutine("DressChangeStart");
+	}
+
+	IEnumerator DressChangeStart()
+	{
+		yield return new WaitForSeconds(1);
+		SceneManager.LoadScene("dresschange");
+	}
+
 
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CharacterSelectSceneAction : MonoBehaviour
 {
 
-	public string selectCharacterPanelName = "";
+	public string selectCharacterPanelName = ""; 
     public SePlayer sePlayer;
 
 
