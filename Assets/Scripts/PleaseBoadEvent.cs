@@ -74,7 +74,7 @@ public class PleaseBoadEvent : MonoBehaviour
            img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + itemNameList[characterId][i]);
             itemObjectRoot.transform.position = new Vector3(
                 itemObjectRoot.transform.position.x,
-                -65 + (setPostionCount * -170),
+                65 + (setPostionCount * -170),
                 itemObjectRoot.transform.position.z);
             setPostionCount++;
 
