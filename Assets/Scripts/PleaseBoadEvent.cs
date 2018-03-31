@@ -60,6 +60,7 @@ public class PleaseBoadEvent : MonoBehaviour
         Debug.Log(itemNameList.Keys.ToString());
 
         var itemCount = itemNameList[characterId].Count;
+        var setPostionCount = 1;
         for (int i = 1; i <= 4; i++) {
 
            GameObject itemObjectRoot = GameObject.Find("ItemObj" + i).gameObject;
@@ -71,7 +72,13 @@ public class PleaseBoadEvent : MonoBehaviour
            }
            Image img = itemObjectRoot.transform.FindChild("Icon").GetComponent<Image>();
            img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + itemNameList[characterId][i]);
-           if (userGamePlayData.userCharacterData == null){
+            itemObjectRoot.transform.position.Set(
+                itemObjectRoot.transform.position.x,
+                -65 + (setPostionCount * -170),
+                itemObjectRoot.transform.position.z);
+            setPostionCount++;
+
+            if (userGamePlayData.userCharacterData == null){
                 itemObjectRoot.transform.Find("OnegaiButton").gameObject.SetActive(true);
                 itemObjectRoot.transform.Find("DressChangeButton").gameObject.SetActive(false);
                 continue;
@@ -88,10 +95,10 @@ public class PleaseBoadEvent : MonoBehaviour
                 itemObjectRoot.transform.Find("DressChangeButton").gameObject.SetActive(false);
                 continue;
            } else {
-                itemObjectRoot.transform.Find("OnegaiButton").gameObject.SetActive(false);
-                itemObjectRoot.transform.Find("DressChangeButton").gameObject.SetActive(true);
+                itemObjectRoot.transform.gameObject.SetActive(false);
                 continue;
             }
+
         }
         pleaseWindow.SetActive (false);
     }
