@@ -72,32 +72,31 @@ public class PleaseBoadEvent : MonoBehaviour
            }
            Image img = itemObjectRoot.transform.FindChild("Icon").GetComponent<Image>();
            img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + itemNameList[characterId][i]);
-            itemObjectRoot.transform.position = new Vector3(
-                itemObjectRoot.transform.position.x,
-                65 + (setPostionCount * -170),
-                itemObjectRoot.transform.position.z);
-            setPostionCount++;
+           var localPosition = itemObjectRoot.transform.localPosition;
+           itemObjectRoot.transform.localPosition = new Vector3(localPosition.x, 390 + (setPostionCount * -170), localPosition.z);
+           Debug.Log(65 + (setPostionCount * -170));           
 
-            if (userGamePlayData.userCharacterData == null){
+           if (userGamePlayData.userCharacterData == null){
                 itemObjectRoot.transform.Find("OnegaiButton").gameObject.SetActive(true);
                 itemObjectRoot.transform.Find("DressChangeButton").gameObject.SetActive(false);
+                setPostionCount++;
                 continue;
            }
            var characterDataCountFlg = userGamePlayData.userCharacterData.ContainsKey(characterId);
            if (!characterDataCountFlg) {
                 itemObjectRoot.transform.Find("OnegaiButton").gameObject.SetActive(true);
                 itemObjectRoot.transform.Find("DressChangeButton").gameObject.SetActive(false);
+                setPostionCount++;
                 continue;
            }
            var itemCountFlg = userGamePlayData.userCharacterData[characterId].itemCountTable.ContainsKey(i);
            if (!itemCountFlg || userGamePlayData.userCharacterData[characterId].itemCountTable[i] < 0) {
                 itemObjectRoot.transform.Find("OnegaiButton").gameObject.SetActive(true);
                 itemObjectRoot.transform.Find("DressChangeButton").gameObject.SetActive(false);
+                setPostionCount++;
                 continue;
-           } else {
-                itemObjectRoot.transform.gameObject.SetActive(false);
-                continue;
-            }
+           } 
+           itemObjectRoot.transform.gameObject.SetActive(false);           
 
         }
         pleaseWindow.SetActive (false);
