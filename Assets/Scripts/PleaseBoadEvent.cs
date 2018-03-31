@@ -72,7 +72,7 @@ public class PleaseBoadEvent : MonoBehaviour
            }
            Image img = itemObjectRoot.transform.FindChild("Icon").GetComponent<Image>();
            img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + itemNameList[characterId][i]);
-            itemObjectRoot.transform.position.Set(
+            itemObjectRoot.transform.position = new Vector3(
                 itemObjectRoot.transform.position.x,
                 -65 + (setPostionCount * -170),
                 itemObjectRoot.transform.position.z);
