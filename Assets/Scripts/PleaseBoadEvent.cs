@@ -17,7 +17,10 @@ public class PleaseBoadEvent : MonoBehaviour
         var setPostionCount = 1;
         var userGamePlayData = UserPlayData.Instance.userGamePlayData;
         for (int i = 1; i <= 4; i++) {
-
+           if (i == 1)
+           {
+                continue;
+           }
            GameObject itemObjectRoot = GameObject.Find("ItemObj" + i).gameObject;
            if (i <= itemCount) {
                itemObjectRoot.SetActive(true);
@@ -29,7 +32,6 @@ public class PleaseBoadEvent : MonoBehaviour
            img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[characterId][i]);
            var localPosition = itemObjectRoot.transform.localPosition;
            itemObjectRoot.transform.localPosition = new Vector3(localPosition.x, 390 + (setPostionCount * -170), localPosition.z);
-           Debug.Log(65 + (setPostionCount * -170));           
 
            if (userGamePlayData.userCharacterData == null){
                 setPostionCount++;
@@ -56,6 +58,7 @@ public class PleaseBoadEvent : MonoBehaviour
         
         Image img = pleaseWindow.transform.FindChild("SelectItem").GetComponent<Image>();
         img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[UserPlayData.Instance.selectCharacterId][itemId]);
+        UserPlayData.Instance.userGamePlayData.pleaseCharacterId = UserPlayData.Instance.selectCharacterId;
         UserPlayData.Instance.userGamePlayData.pleaseItemId = itemId;
         if (UserPlayData.Instance.userGamePlayData.userCharacterData == null) {
             UserPlayData.Instance.userGamePlayData.userCharacterData = new Dictionary<int, UserCharacterData>();

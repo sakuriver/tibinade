@@ -31,24 +31,27 @@ public class DressChangeSceneEvent : MonoBehaviour {
             Image img = itemObjectRoot.transform.FindChild("Icon").GetComponent<Image>();
             img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[characterId][i]);
             var localPosition = itemObjectRoot.transform.localPosition;
-            itemObjectRoot.transform.localPosition = new Vector3(localPosition.x, 390 + (setPostionCount * -170), localPosition.z);
+            itemObjectRoot.transform.localPosition = new Vector3(localPosition.x, 325 + (setPostionCount * -170), localPosition.z);
 
-            if (userGamePlayData.userCharacterData == null)
+            if (i > 1)
             {
-                itemObjectRoot.transform.gameObject.SetActive(false);
-                continue;
-            }
-            var characterDataCountFlg = userGamePlayData.userCharacterData.ContainsKey(characterId);
-            if (!characterDataCountFlg)
-            {
-                itemObjectRoot.transform.gameObject.SetActive(false);
-                continue;
-            }
-            var itemCountFlg = userGamePlayData.userCharacterData[characterId].itemCountTable.ContainsKey(i);
-            if (!itemCountFlg || userGamePlayData.userCharacterData[characterId].itemCountTable[i] < 0)
-            {
-                itemObjectRoot.transform.gameObject.SetActive(false);
-                continue;
+                if (userGamePlayData.userCharacterData == null)
+                {
+                    itemObjectRoot.transform.gameObject.SetActive(false);
+                    continue;
+                }
+                var characterDataCountFlg = userGamePlayData.userCharacterData.ContainsKey(characterId);
+                if (!characterDataCountFlg)
+                {
+                    itemObjectRoot.transform.gameObject.SetActive(false);
+                    continue;
+                }
+                var itemCountFlg = userGamePlayData.userCharacterData[characterId].itemCountTable.ContainsKey(i);
+                if (!itemCountFlg || userGamePlayData.userCharacterData[characterId].itemCountTable[i] < 0)
+                {
+                    itemObjectRoot.transform.gameObject.SetActive(false);
+                    continue;
+                }
             }
             setPostionCount++;
 
