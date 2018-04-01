@@ -6,10 +6,11 @@ public class PleaseItem
     public static Dictionary<int, Dictionary<int, CharacterIconInfo>> ItemNameList = new Dictionary<int, Dictionary<int, CharacterIconInfo>>()
         {
             {1, new Dictionary<int, CharacterIconInfo> {
-                {1, new CharacterIconInfo("ONluklukEicon", "E")},
-                {2, new CharacterIconInfo("ONluklukBicon", "B")},
-                {3, new CharacterIconInfo("ONluklukCicon", "C")},
-                {4, new CharacterIconInfo("ONluklukDicon", "D")},
+                {1, new CharacterIconInfo("ONluklukAicon", "A")},
+                { 2, new CharacterIconInfo("ONluklukEicon", "E")},
+                {3, new CharacterIconInfo("ONluklukBicon", "B")},
+                {4, new CharacterIconInfo("ONluklukCicon", "C")},
+                {5, new CharacterIconInfo("ONluklukDicon", "D")},
                 }
             },
             { 2, new Dictionary<int, CharacterIconInfo> {

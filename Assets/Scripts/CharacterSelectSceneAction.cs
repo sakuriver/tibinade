@@ -32,7 +32,7 @@ public class CharacterSelectSceneAction : MonoBehaviour
 	void selectColor(string[] updateInfo) {
 		selectCharacterPanelName = updateInfo[0];
 		UserPlayData.Instance.selectCharacterId = int.Parse(updateInfo[1]);
-        UserPlayData.Instance.selectItemId = 0;
+        UserPlayData.Instance.selectItemId = 1;
 		int selectCharacterId = UserPlayData.Instance.selectCharacterId;
 		Image img = GameObject.Find(selectCharacterPanelName).transform.Find("BackGround").GetComponent<Image>();
 		img.color = this.GetComponent<MainSceneLoad>().selectColorList[selectCharacterId];
