@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class PleaseBoadEvent : MonoBehaviour
 {
-    public UserGamePlayData userGamePlayData;
 
     private GameObject pleaseWindow;
 
@@ -16,6 +15,7 @@ public class PleaseBoadEvent : MonoBehaviour
 
         var itemCount = PleaseItem.ItemNameList[characterId].Count;
         var setPostionCount = 1;
+        var userGamePlayData = UserPlayData.Instance.userGamePlayData;
         for (int i = 1; i <= 4; i++) {
 
            GameObject itemObjectRoot = GameObject.Find("ItemObj" + i).gameObject;
@@ -56,28 +56,27 @@ public class PleaseBoadEvent : MonoBehaviour
         
         Image img = pleaseWindow.transform.FindChild("SelectItem").GetComponent<Image>();
         img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[UserPlayData.Instance.selectCharacterId][itemId]);
-        userGamePlayData.pleaseCharacterId = UserPlayData.Instance.selectCharacterId;
-        userGamePlayData.pleaseItemId = itemId;
-        if (userGamePlayData.userCharacterData == null) {
-            userGamePlayData.userCharacterData = new Dictionary<int, UserCharacterData>();
+        UserPlayData.Instance.userGamePlayData.pleaseItemId = itemId;
+        if (UserPlayData.Instance.userGamePlayData.userCharacterData == null) {
+            UserPlayData.Instance.userGamePlayData.userCharacterData = new Dictionary<int, UserCharacterData>();
         }
-        if (!userGamePlayData.userCharacterData.ContainsKey(userGamePlayData.pleaseCharacterId)) {
-            userGamePlayData.userCharacterData.Add(userGamePlayData.pleaseCharacterId, new UserCharacterData());
-            userGamePlayData.userCharacterData[userGamePlayData.pleaseCharacterId].itemCountTable = new Dictionary<int, int>();
+        if (!UserPlayData.Instance.userGamePlayData.userCharacterData.ContainsKey(UserPlayData.Instance.userGamePlayData.pleaseCharacterId)) {
+            UserPlayData.Instance.userGamePlayData.userCharacterData.Add(UserPlayData.Instance.userGamePlayData.pleaseCharacterId, new UserCharacterData());
+            UserPlayData.Instance.userGamePlayData.userCharacterData[UserPlayData.Instance.userGamePlayData.pleaseCharacterId].itemCountTable = new Dictionary<int, int>();
         }
         pleaseWindow.SetActive(true);
 	}
 
 
 	public void NoButtonClick() {
-        userGamePlayData.pleaseCommandFlg = false;
+        UserPlayData.Instance.userGamePlayData.pleaseCommandFlg = false;
 		pleaseWindow.SetActive (false);
 	}
 
 	public void YesButtonClick() {
-        userGamePlayData.pleaseCommandFlg = true;
-        userGamePlayData.pleaseCompleteTime = System.DateTime.Now;
-        userGamePlayData.pleaseCompleteTime = userGamePlayData.pleaseCompleteTime.Add(new System.TimeSpan(0, 0, 20));
+        UserPlayData.Instance.userGamePlayData.pleaseCommandFlg = true;
+        UserPlayData.Instance.userGamePlayData.pleaseCompleteTime = System.DateTime.Now;
+        UserPlayData.Instance.userGamePlayData.pleaseCompleteTime = UserPlayData.Instance.userGamePlayData.pleaseCompleteTime.Add(new System.TimeSpan(0, 0, 20));
         pleaseWindow.SetActive (false);
 	}
 

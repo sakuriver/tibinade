@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 
 public class DressChangeSceneEvent : MonoBehaviour {
-    public UserGamePlayData userGamePlayData;
 
     public GameObject CharaPanel;
 
@@ -15,6 +14,7 @@ public class DressChangeSceneEvent : MonoBehaviour {
 
         var itemCount = PleaseItem.ItemNameList[characterId].Count;
         var setPostionCount = 1;
+        var userGamePlayData = UserPlayData.Instance.userGamePlayData;
         for (int i = 1; i <= 4; i++)
         {
 

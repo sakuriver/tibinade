@@ -7,5 +7,6 @@ public class UserPlayData
 	public int selectCharacterId = 0;
     public int selectItemId = 0;
     public string pleasePrevCharacterTextNumber = "";
+    public UserGamePlayData userGamePlayData = new UserGamePlayData();
 
 }
