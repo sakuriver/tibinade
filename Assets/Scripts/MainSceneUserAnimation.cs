@@ -23,7 +23,7 @@ public class MainSceneUserAnimation : MonoBehaviour
             return;
         }
         if (userPlayData.userGamePlayData.pleaseCommandFlg) {
-            pleaseItemIcon.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[userPlayData.userGamePlayData.pleaseCharacterId][userPlayData.userGamePlayData.pleaseItemId]);
+            pleaseItemIcon.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[userPlayData.userGamePlayData.pleaseCharacterId][userPlayData.userGamePlayData.pleaseItemId].IconName);
             pleaseItemIcon.SetNativeSize();
             pleaseTimeText.enabled = true;
         }

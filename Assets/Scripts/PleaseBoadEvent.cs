@@ -29,7 +29,7 @@ public class PleaseBoadEvent : MonoBehaviour
                continue;
            }
            Image img = itemObjectRoot.transform.FindChild("Icon").GetComponent<Image>();
-           img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[characterId][i]);
+           img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[characterId][i].IconName);
            var localPosition = itemObjectRoot.transform.localPosition;
            itemObjectRoot.transform.localPosition = new Vector3(localPosition.x, 390 + (setPostionCount * -170), localPosition.z);
 
@@ -57,7 +57,7 @@ public class PleaseBoadEvent : MonoBehaviour
     public void OpenWindowButtonClick(int itemId) {
         
         Image img = pleaseWindow.transform.FindChild("SelectItem").GetComponent<Image>();
-        img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[UserPlayData.Instance.selectCharacterId][itemId]);
+        img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[UserPlayData.Instance.selectCharacterId][itemId].IconName);
         UserPlayData.Instance.userGamePlayData.pleaseCharacterId = UserPlayData.Instance.selectCharacterId;
         UserPlayData.Instance.userGamePlayData.pleaseItemId = itemId;
         if (UserPlayData.Instance.userGamePlayData.userCharacterData == null) {

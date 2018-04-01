@@ -279,9 +279,9 @@ public class DotMoveAnimation : MonoBehaviour
 		GameObject charaBody = GameObject.Find ("CharaBody");
 		GameObject charaFace = GameObject.Find ("CharaFace");
 		string characterName = characterNames [characterId];
-        string[] itemTypeList = new string [] { "A", "B", "C", "D"};
-        Debug.Log("Avator/" + characterName + "_body_" + itemTypeList[itemId] + poseName);
-		Sprite ps = Resources.Load<Sprite> ("Avator/" + characterName  +"_body_" + itemTypeList[itemId] + poseName);
+        string itemTypeName = PleaseItem.ItemNameList[characterId][itemId].DressTypeName;
+        Debug.Log("Avator/" + characterName + "_body_" + itemTypeName + poseName);
+		Sprite ps = Resources.Load<Sprite> ("Avator/" + characterName  +"_body_" + itemTypeName + poseName);
 		Vector2 selectFacePosition = charaPoseFacePositions [characterId][poseValue];
 		charaBody.GetComponent<Image>().sprite = ps;
 		charaBody.GetComponent<RectTransform> ().sizeDelta = new Vector2 (ps.bounds.size.x * 100, ps.bounds.size.y * 100);

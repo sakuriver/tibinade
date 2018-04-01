@@ -2,48 +2,58 @@
 
 public class PleaseItem
 {
-    public static Dictionary<int, Dictionary<int, string>> ItemNameList = new Dictionary<int, Dictionary<int, string>>()
+    
+    public static Dictionary<int, Dictionary<int, CharacterIconInfo>> ItemNameList = new Dictionary<int, Dictionary<int, CharacterIconInfo>>()
         {
-            {1, new Dictionary<int, string> {
-                {1, "ONluklukEicon"},
-                {2, "ONluklukBicon"},
-                {3, "ONluklukCicon"},
-                {4, "ONluklukDicon"},
+            {1, new Dictionary<int, CharacterIconInfo> {
+                {1, new CharacterIconInfo("ONluklukEicon", "E")},
+                {2, new CharacterIconInfo("ONluklukBicon", "B")},
+                {3, new CharacterIconInfo("ONluklukCicon", "C")},
+                {4, new CharacterIconInfo("ONluklukDicon", "D")},
                 }
             },
-            { 2, new Dictionary<int, string> {
-                {1, "ONdieuleiconA"},
-                {2, "ONdieuleiconB"},
-                {3, "ONdieuleiconC"},
+            { 2, new Dictionary<int, CharacterIconInfo> {
+                {1, new CharacterIconInfo("ONdieuleiconA", "A")},
+                {2, new CharacterIconInfo("ONdieuleiconB", "B")},
+                {3, new CharacterIconInfo("ONdieuleiconC", "C")},
                 }
             },
-            { 3, new Dictionary<int, string> {
-                {1, "OngelpiciconB"},
-                {2, "OngelpiciconC"},
-                {3, "OngelpiciconD"},
-                {4, "OngelpiciconE"},
+            { 3, new Dictionary<int, CharacterIconInfo> {
+                {1, new CharacterIconInfo("OngelpiciconB", "B")},
+                {2, new CharacterIconInfo("OngelpiciconC", "C")},
+                {3, new CharacterIconInfo("OngelpiciconD", "D")},
+                {4, new CharacterIconInfo("OngelpiciconE", "E")},
             }
             },
-            { 4, new Dictionary<int, string> {
-                {1, "ONsroniconA"},
-                {2, "ONsroniconB"},
-                {3, "ONsroniconC"},
-                {4, "ONsroniconD"},
-                {5, "ONsroniconE"},
+            { 4, new Dictionary<int, CharacterIconInfo> {
+                {1, new CharacterIconInfo("ONsroniconA", "A")},
+                {2, new CharacterIconInfo("ONsroniconB", "B")},
+                {3, new CharacterIconInfo("ONsroniconC", "C")},
+                {4, new CharacterIconInfo("ONsroniconD", "D")},
+                {5, new CharacterIconInfo("ONsroniconE", "E")},
             } },
-            { 5, new Dictionary<int, string> {
-                {1, "ONpameliconA"},
-                {2, "ONpameliconB"},
-                {3, "ONpameliconC"},
-                {4, "ONpameliconE"},
-                {5, "ONpameliconF"},
+            { 5, new Dictionary<int, CharacterIconInfo> {
+                {1, new CharacterIconInfo("ONpameliconA", "A")},
+                {2, new CharacterIconInfo("ONpameliconB", "B")},
+                {3, new CharacterIconInfo("ONpameliconC", "C")},
+                {4, new CharacterIconInfo("ONpameliconE", "E")},
+                {5, new CharacterIconInfo("ONpameliconF", "F")},
             } },
-            { 6, new Dictionary<int, string> {
-                {1, "ONghigliaiconB" },
-                {2, "ONghigliaiconC" },
-                {3, "ONghigliaiconD" },
-                {4, "ONghigliaiconE" },
+            { 6, new Dictionary<int, CharacterIconInfo> {
+                {1, new CharacterIconInfo("ONghigliaiconB", "B") },
+                {2, new CharacterIconInfo("ONghigliaiconC", "C") },
+                {3, new CharacterIconInfo("ONghigliaiconD", "D") },
+                {4, new CharacterIconInfo("ONghigliaiconE", "E") },
             } }
 
         };
+}
+
+public class CharacterIconInfo {
+    public string IconName;
+    public string DressTypeName;
+    public CharacterIconInfo(string iconName,string dressTypeName) {
+        this.IconName = iconName;
+        this.DressTypeName = dressTypeName;
+    }
 }
