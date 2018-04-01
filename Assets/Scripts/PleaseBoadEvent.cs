@@ -17,11 +17,13 @@ public class PleaseBoadEvent : MonoBehaviour
         var setPostionCount = 1;
         var userGamePlayData = UserPlayData.Instance.userGamePlayData;
         for (int i = 1; i <= 4; i++) {
+           GameObject itemObjectRoot = GameObject.Find("ItemObj" + i).gameObject;
            if (i == 1)
            {
+                itemObjectRoot.SetActive(false);
+
                 continue;
            }
-           GameObject itemObjectRoot = GameObject.Find("ItemObj" + i).gameObject;
            if (i <= itemCount) {
                itemObjectRoot.SetActive(true);
            } else {

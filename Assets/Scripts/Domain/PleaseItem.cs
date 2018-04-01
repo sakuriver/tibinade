@@ -20,10 +20,11 @@ public class PleaseItem
                 }
             },
             { 3, new Dictionary<int, CharacterIconInfo> {
-                {1, new CharacterIconInfo("OngelpiciconB", "B")},
-                {2, new CharacterIconInfo("OngelpiciconC", "C")},
-                {3, new CharacterIconInfo("OngelpiciconD", "D")},
-                {4, new CharacterIconInfo("OngelpiciconE", "E")},
+                {1, new CharacterIconInfo("OngelpiciconA", "A")},
+                {2, new CharacterIconInfo("OngelpiciconB", "B")},
+                {3, new CharacterIconInfo("OngelpiciconC", "C")},
+                {4, new CharacterIconInfo("OngelpiciconD", "D")},
+                {5, new CharacterIconInfo("OngelpiciconE", "E")},
             }
             },
             { 4, new Dictionary<int, CharacterIconInfo> {
@@ -41,10 +42,11 @@ public class PleaseItem
                 {5, new CharacterIconInfo("ONpameliconF", "F")},
             } },
             { 6, new Dictionary<int, CharacterIconInfo> {
-                {1, new CharacterIconInfo("ONghigliaiconB", "B") },
-                {2, new CharacterIconInfo("ONghigliaiconC", "C") },
-                {3, new CharacterIconInfo("ONghigliaiconD", "D") },
-                {4, new CharacterIconInfo("ONghigliaiconE", "E") },
+                {1, new CharacterIconInfo("ONghigliaiconA", "A")},
+                {2, new CharacterIconInfo("ONghigliaiconB", "B") },
+                {3, new CharacterIconInfo("ONghigliaiconC", "C") },
+                {4, new CharacterIconInfo("ONghigliaiconD", "D") },
+                {5, new CharacterIconInfo("ONghigliaiconE", "E") },
             } }
 
         };
