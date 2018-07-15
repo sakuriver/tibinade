@@ -28,7 +28,7 @@ public class DressChangeSceneEvent : MonoBehaviour {
                 itemObjectRoot.SetActive(false);
                 continue;
             }
-            Image img = itemObjectRoot.transform.FindChild("Icon").GetComponent<Image>();
+            Image img = itemObjectRoot.transform.Find("Icon").GetComponent<Image>();
             img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[characterId][i].IconName);
             var localPosition = itemObjectRoot.transform.localPosition;
             itemObjectRoot.transform.localPosition = new Vector3(localPosition.x, 325 + (setPostionCount * -170), localPosition.z);
