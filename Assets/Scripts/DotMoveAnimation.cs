@@ -85,10 +85,10 @@ public class DotMoveAnimation : MonoBehaviour
 		charaPoseFacePositions [6].Add (3, new Vector2 (-68, 185));
 		charaPoseFacePositions [6].Add (4, new Vector2 (25, 198));
         charaPoseFacePositions.Add(7, new Dictionary<int, Vector2>());
-        charaPoseFacePositions[7].Add(1, new Vector2(18, 287));
-        charaPoseFacePositions[7].Add(2, new Vector2(-45, 290));
-        charaPoseFacePositions[7].Add(3, new Vector2(-68, 185));
-        charaPoseFacePositions[7].Add(4, new Vector2(25, 198));
+        charaPoseFacePositions[7].Add(1, new Vector2(3, 338));
+        charaPoseFacePositions[7].Add(2, new Vector2(-42, 335));
+        charaPoseFacePositions[7].Add(3, new Vector2(63, 228));
+        charaPoseFacePositions[7].Add(4, new Vector2(0, 235));
 
         characterNames = new Dictionary<int, string>();
 		characterNames.Add (1, "lukluk");

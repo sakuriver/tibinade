@@ -47,8 +47,13 @@ public class PleaseItem
                 {3, new CharacterIconInfo("ONghigliaiconC", "C") },
                 {4, new CharacterIconInfo("ONghigliaiconD", "D") },
                 {5, new CharacterIconInfo("ONghigliaiconE", "E") },
+            } },
+            { 7, new Dictionary<int, CharacterIconInfo> {
+                {1, new CharacterIconInfo("ONghigliaiconA", "A")},
+                {2, new CharacterIconInfo("ONghigliaiconB", "B") },
+                {3, new CharacterIconInfo("ONghigliaiconC", "C") },
+                {4, new CharacterIconInfo("ONghigliaiconE", "E") },
             } }
-
         };
 }
 
