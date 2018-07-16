@@ -84,29 +84,37 @@ public class DotMoveAnimation : MonoBehaviour
 		charaPoseFacePositions [6].Add (2, new Vector2 (-45, 290));
 		charaPoseFacePositions [6].Add (3, new Vector2 (-68, 185));
 		charaPoseFacePositions [6].Add (4, new Vector2 (25, 198));
-		characterNames = new Dictionary<int, string>();
+        charaPoseFacePositions.Add(7, new Dictionary<int, Vector2>());
+        charaPoseFacePositions[7].Add(1, new Vector2(18, 287));
+        charaPoseFacePositions[7].Add(2, new Vector2(-45, 290));
+        charaPoseFacePositions[7].Add(3, new Vector2(-68, 185));
+        charaPoseFacePositions[7].Add(4, new Vector2(25, 198));
+
+        characterNames = new Dictionary<int, string>();
 		characterNames.Add (1, "lukluk");
 		characterNames.Add (2, "dieule");
 		characterNames.Add (3, "gelpic");
 		characterNames.Add (4, "sron");
 		characterNames.Add (5, "pamel");
 		characterNames.Add (6, "ghiglia");
-		characterBgNames = new Dictionary<int, string> ();
+        characterNames.Add(7, "decerick");
+        characterBgNames = new Dictionary<int, string> ();
 		characterBgNames.Add (1, "lukluk_BG");
 		characterBgNames.Add (2, "dieule_BG");
 		characterBgNames.Add (3, "picsron_BG");
 		characterBgNames.Add (4, "picsron_BG");
 		characterBgNames.Add (5, "pamel_BG");
 		characterBgNames.Add (6, "ghiglia_BG");
-
-		characterFaces = new Dictionary<int, int> ();
+        characterBgNames.Add(7, "decerick_BG");
+        characterFaces = new Dictionary<int, int> ();
 		characterFaces.Add (1, 11);
 		characterFaces.Add (2, 11);
 		characterFaces.Add (3, 11);
 		characterFaces.Add (4, 11);
 		characterFaces.Add (5, 11);
 		characterFaces.Add (6, 11);
-		characterTexts = new Dictionary<int, int> ();
+        characterFaces.Add(7, 11);
+        characterTexts = new Dictionary<int, int> ();
 
 		characterTexts.Add (1, 43);
 		characterTexts.Add (2, 7);
@@ -114,7 +122,8 @@ public class DotMoveAnimation : MonoBehaviour
 		characterTexts.Add (4, 12);
 		characterTexts.Add (5, 12);
 		characterTexts.Add (6, 12);
-		CharaMove();
+        characterTexts.Add(7, 12);
+        CharaMove();
 		CharaPoseChange ();
 		int characterId = UserPlayData.Instance.selectCharacterId;
         GameObject gameBg = GameObject.Find("BackGround");

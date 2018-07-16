@@ -7,7 +7,16 @@ public class CharacterSelectSceneAction : MonoBehaviour
 
 	public string selectCharacterPanelName = ""; 
     public SePlayer sePlayer;
+    public int selectPageType = 0;
+    public GameObject leftArrowButton;
+    public GameObject rightArrowButton;
+    public GameObject[] firstPageObject;
+    public GameObject[] secondPageObject;
 
+    public void Start()
+    {
+        OnAllowPointerUp(selectPageType);
+    }
 
     public void OnCharacterPointerUp(string selectPanelLabel)
 	{
@@ -19,6 +28,41 @@ public class CharacterSelectSceneAction : MonoBehaviour
             selectColor(updateInfo);
 		}
 	}
+
+    public void OnAllowPointerUp(int pageType)
+    {
+        if (pageType == 0)
+        {
+            leftArrowButton.SetActive(false);
+            rightArrowButton.SetActive(true);
+            for (var i = 0; i < firstPageObject.Length; i++) {
+                firstPageObject[i].SetActive(true);
+            }
+            for (var i = 0; i < secondPageObject.Length; i++)
+            {
+                secondPageObject[i].SetActive(false);
+            }
+        }
+        else
+        {
+            leftArrowButton.SetActive(true);
+            rightArrowButton.SetActive(false);
+            for (var i = 0; i < firstPageObject.Length; i++)
+            {
+                firstPageObject[i].SetActive(false);
+            }
+            for (var i = 0; i < secondPageObject.Length; i++)
+            {
+                secondPageObject[i].SetActive(true);
+            }
+        }
+
+        if (selectPageType != pageType) {
+            sePlayer.onClickSe();
+        }
+
+        selectPageType = pageType;
+    }
 
 	void unSelectColor() {
 		var unselectObj = GameObject.Find(selectCharacterPanelName);
