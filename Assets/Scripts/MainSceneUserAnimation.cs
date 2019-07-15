@@ -10,6 +10,8 @@ public class MainSceneUserAnimation : MonoBehaviour
 
     public GameObject pleaseBoardRoot;
     public GameObject pleaseBoardCompleteRoot;
+    public Text pleaseBoardText;
+    public Image pleaseBoardItemIcon;
     public Text pleaseTimeText;
     public Image pleaseItemIcon;
 
@@ -68,6 +70,25 @@ public class MainSceneUserAnimation : MonoBehaviour
                     UserPlayData.Instance.userGamePlayData.userCharacterData[pleaseCharacterId].itemCountTable[pleaseItemId] += 1;
                 }
                 UserPlayData.Instance.userGamePlayData.pleaseCommandFlg = false;
+                DataBank bank = DataBank.Open();
+                UserGameSaveData saveData = new UserGameSaveData();
+                saveData.pleaseCharacterId = UserPlayData.Instance.userGamePlayData.pleaseCharacterId;
+                saveData.pleaseCommandFlg = UserPlayData.Instance.userGamePlayData.pleaseCommandFlg;
+                saveData.pleaseCompleteTime = UserPlayData.Instance.userGamePlayData.pleaseCompleteTime;
+                saveData.userCharacterDatas = new List<UserCharacterSaveData>();
+                foreach (KeyValuePair<int, UserCharacterData> userSaveData in UserPlayData.Instance.userGamePlayData.userCharacterData) {
+                    foreach (KeyValuePair<int, int> itemCountTable in userSaveData.Value.itemCountTable)
+                    {
+                        var userCharacterSaveData = new UserCharacterSaveData();
+                        userCharacterSaveData.characterId = userSaveData.Key;
+                        userCharacterSaveData.itemId = itemCountTable.Key;
+                        userCharacterSaveData.itemCount = itemCountTable.Value;
+                        saveData.userCharacterDatas.Add(userCharacterSaveData);
+                    }
+                }
+                bank.Store("userGamePlay", saveData);
+                bank.SaveAll();
+                pleaseBoardItemIcon.sprite = pleaseItemIcon.sprite;
                 pleaseBoardCompleteRoot.SetActive(true);
             }
             pleaseBoardRoot.SetActive(pleaseTimeTextEnabled);
