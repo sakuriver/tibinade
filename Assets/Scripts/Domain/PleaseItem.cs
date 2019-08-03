@@ -55,6 +55,14 @@ public class PleaseItem
                 {4, new CharacterIconInfo("ONghigliaiconE", "E") },
             } }
         };
+    public static Dictionary<string, System.TimeSpan> PleaseTimeWaitGroupList = new Dictionary<string, System.TimeSpan>()
+    {
+        {"B", new System.TimeSpan(0, 1, 5)},
+        {"C", new System.TimeSpan(0, 30, 5)},
+        {"D", new System.TimeSpan(1, 0, 5)},
+        {"E", new System.TimeSpan(3, 1, 5)},
+        {"F", new System.TimeSpan(6, 1, 5)},
+    };
 }
 
 public class CharacterIconInfo {

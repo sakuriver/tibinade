@@ -11,6 +11,13 @@ public class UserGamePlayData : ScriptableObject {
     public int pleaseItemId;
     public bool pleaseCommandFlg;
     public DateTime pleaseCompleteTime;
+    public int pleaseCompleteYear;
+    public int pleaseCompleteMonth;
+    public int pleaseCompleteDay;
+    public int pleaseCompleteHour;
+    public int pleaseCompleteMinute;
+    public int pleaseCompleteSecond;
+    public int pleaseCompleteMilliSecond;
     public Dictionary<int, UserCharacterData> userCharacterData;
 }
 
@@ -21,7 +28,15 @@ public class UserGameSaveData {
     public int pleaseItemId;
     public bool pleaseCommandFlg;
     public DateTime pleaseCompleteTime;
+    public int pleaseCompleteYear;
+    public int pleaseCompleteMonth;
+    public int pleaseCompleteDay;
+    public int pleaseCompleteHour;
+    public int pleaseCompleteMinute;
+    public int pleaseCompleteSecond;
+    public int pleaseCompleteMilliSecond;
     public List<UserCharacterSaveData> userCharacterDatas;
+   
 }
 
 [Serializable]

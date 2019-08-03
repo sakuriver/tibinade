@@ -81,7 +81,9 @@ public class PleaseBoadEvent : MonoBehaviour
 	public void YesButtonClick() {
         UserPlayData.Instance.userGamePlayData.pleaseCommandFlg = true;
         UserPlayData.Instance.userGamePlayData.pleaseCompleteTime = System.DateTime.Now;
-        UserPlayData.Instance.userGamePlayData.pleaseCompleteTime = UserPlayData.Instance.userGamePlayData.pleaseCompleteTime.Add(new System.TimeSpan(0, 0, 20));
+        var itemGroupId = PleaseItem.ItemNameList[UserPlayData.Instance.userGamePlayData.pleaseCharacterId][UserPlayData.Instance.userGamePlayData.pleaseItemId].DressTypeName;
+        UserPlayData.Instance.userGamePlayData.pleaseCompleteTime = UserPlayData.Instance.userGamePlayData.pleaseCompleteTime.Add(PleaseItem.PleaseTimeWaitGroupList[itemGroupId]);
+        UserPlayData.UpdateSaveData();
         pleaseWindow.SetActive (false);
 	}
 

@@ -7,9 +7,11 @@ using UnityEngine.UI;
 public class DressChangeSceneEvent : MonoBehaviour {
 
     public GameObject CharaPanel;
+    private GameObject changeCompleteWindow;
 
 	// Use this for initialization
 	void Start () {
+        changeCompleteWindow = GameObject.Find("ChangeCompletePanel");
         var characterId = UserPlayData.Instance.selectCharacterId;
 
         var itemCount = PleaseItem.ItemNameList[characterId].Count;
@@ -56,6 +58,8 @@ public class DressChangeSceneEvent : MonoBehaviour {
             setPostionCount++;
 
         }
+
+        changeCompleteWindow.SetActive(false);
     }
 
 	// Update is called once per frame
@@ -78,6 +82,15 @@ public class DressChangeSceneEvent : MonoBehaviour {
     public void OnClickDressChangeButton(int itemId)
     {
         UserPlayData.Instance.selectItemId = itemId;
+        Image img = changeCompleteWindow.transform.Find("SelectItem").GetComponent<Image>();
+        img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[UserPlayData.Instance.selectCharacterId][itemId].IconName);
+        UserPlayData.UpdateSaveData();
+        changeCompleteWindow.SetActive(true);
+    }
+
+    public void OkButtonClick()
+    {
+        changeCompleteWindow.SetActive(false);
     }
 
 

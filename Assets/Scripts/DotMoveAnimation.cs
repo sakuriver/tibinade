@@ -128,8 +128,9 @@ public class DotMoveAnimation : MonoBehaviour
 		int characterId = UserPlayData.Instance.selectCharacterId;
         GameObject gameBg = GameObject.Find("BackGround");
         AudioSource[] audioSources = GameObject.Find("EventSystem").GetComponents<AudioSource>();
-        touch = audioSources[0];
-
+        if (audioSources.Length > 0) {
+            touch = audioSources[0];
+        }
         if (talkPanelObj != null)
         {
             gameBg.GetComponent<RawImage>().texture = Resources.Load<Texture>("Avator/" + characterBgNames[characterId]);
@@ -296,7 +297,5 @@ public class DotMoveAnimation : MonoBehaviour
 		charaBody.GetComponent<RectTransform> ().sizeDelta = new Vector2 (ps.bounds.size.x * 100, ps.bounds.size.y * 100);
 		charaFace.GetComponent<RectTransform> ().localPosition = new Vector3 (selectFacePosition.x, selectFacePosition.y, charaFace.GetComponent<RectTransform> ().position.z);
 	}
-
-
 
 }
