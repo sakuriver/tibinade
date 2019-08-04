@@ -18,20 +18,15 @@ public class PleaseBoadEvent : MonoBehaviour
         var userGamePlayData = UserPlayData.Instance.userGamePlayData;
         for (int i = 1; i <= 4; i++) {
            GameObject itemObjectRoot = GameObject.Find("ItemObj" + i).gameObject;
-           if (i == 1)
-           {
+           if (i == 1 || i > itemCount) {
                 itemObjectRoot.SetActive(false);
-
                 continue;
            }
-           if (i <= itemCount) {
-               itemObjectRoot.SetActive(true);
-           } else {
-               itemObjectRoot.SetActive(false);
-               continue;
-           }
+           itemObjectRoot.SetActive(true);
            Image img = itemObjectRoot.transform.Find("Icon").GetComponent<Image>();
            img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[characterId][i].IconName);
+           Button btn = itemObjectRoot.transform.Find("OnegaiButton").GetComponent<Button>();
+           btn.interactable = !UserPlayData.Instance.userGamePlayData.pleaseCommandFlg;
            var localPosition = itemObjectRoot.transform.localPosition;
            itemObjectRoot.transform.localPosition = new Vector3(localPosition.x, 390 + (setPostionCount * -170), localPosition.z);
 
@@ -85,6 +80,7 @@ public class PleaseBoadEvent : MonoBehaviour
         UserPlayData.Instance.userGamePlayData.pleaseCompleteTime = UserPlayData.Instance.userGamePlayData.pleaseCompleteTime.Add(PleaseItem.PleaseTimeWaitGroupList[itemGroupId]);
         UserPlayData.UpdateSaveData();
         pleaseWindow.SetActive (false);
+        MainStart();
 	}
 
 	public void OnClick()
