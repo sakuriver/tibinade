@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DressChangeSceneEvent : MonoBehaviour {
 
     public GameObject CharaPanel;
+    public SePlayer sePlayer;
     private GameObject changeCompleteWindow;
 
 	// Use this for initialization
@@ -70,7 +71,8 @@ public class DressChangeSceneEvent : MonoBehaviour {
 
 	public void OnClickBackButton()
 	{
-		StartCoroutine("AlbumStart");
+        sePlayer.onClickSe();
+        StartCoroutine("AlbumStart");
 	}
 
 	IEnumerator AlbumStart()
@@ -81,6 +83,7 @@ public class DressChangeSceneEvent : MonoBehaviour {
 
     public void OnClickDressChangeButton(int itemId)
     {
+        sePlayer.onClickSe();
         UserPlayData.Instance.selectItemId = itemId;
         Image img = changeCompleteWindow.transform.Find("SelectItem").GetComponent<Image>();
         img.sprite = Resources.Load<Sprite>("OnegaiIcon/" + PleaseItem.ItemNameList[UserPlayData.Instance.selectCharacterId][itemId].IconName);
@@ -90,6 +93,7 @@ public class DressChangeSceneEvent : MonoBehaviour {
 
     public void OkButtonClick()
     {
+        sePlayer.onClickSe();
         changeCompleteWindow.SetActive(false);
     }
 

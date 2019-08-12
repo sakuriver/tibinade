@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PleaseBoadEvent : MonoBehaviour
 {
-
+    public SePlayer sePlayer;
     private GameObject pleaseWindow;
 
 	void Start() {
@@ -74,6 +74,7 @@ public class PleaseBoadEvent : MonoBehaviour
 	}
 
 	public void YesButtonClick() {
+        sePlayer.onClickSe();
         UserPlayData.Instance.userGamePlayData.pleaseCommandFlg = true;
         UserPlayData.Instance.userGamePlayData.pleaseCompleteTime = System.DateTime.Now;
         var itemGroupId = PleaseItem.ItemNameList[UserPlayData.Instance.userGamePlayData.pleaseCharacterId][UserPlayData.Instance.userGamePlayData.pleaseItemId].DressTypeName;
@@ -85,6 +86,7 @@ public class PleaseBoadEvent : MonoBehaviour
 
 	public void OnClick()
 	{
+        sePlayer.onClickSe();
         StartCoroutine("MainStart");
 	}
 

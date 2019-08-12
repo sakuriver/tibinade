@@ -3,10 +3,10 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 public class AlbumSceneEvent : MonoBehaviour {
 
-    public GameObject CharaPanel;
+    public SePlayer sePlayer;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -30,6 +30,7 @@ public class AlbumSceneEvent : MonoBehaviour {
 
 	public void OnClickDressChangeButton()
 	{
+        sePlayer.onClickSe();
 		StartCoroutine("DressChangeStart");
 	}
 
