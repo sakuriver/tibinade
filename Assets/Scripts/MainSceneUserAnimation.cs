@@ -10,6 +10,7 @@ public class MainSceneUserAnimation : MonoBehaviour
 
     public GameObject pleaseBoardRoot;
     public GameObject pleaseBoardCompleteRoot;
+    public GameObject talkBoardRoot;
     public Text pleaseBoardText;
     public Image pleaseBoardItemIcon;
     public Text pleaseTimeText;
@@ -20,6 +21,9 @@ public class MainSceneUserAnimation : MonoBehaviour
         var pleaseBoardFlg = userPlayData.userGamePlayData != null && userPlayData.userGamePlayData.pleaseCommandFlg;
         if (pleaseBoardRoot != null) {
             pleaseBoardRoot.SetActive(pleaseBoardFlg);
+        }
+        if (talkBoardRoot != null){
+            talkBoardRoot.SetActive(false);
         }
         if (userPlayData.userGamePlayData == null) {
             return;
@@ -39,6 +43,11 @@ public class MainSceneUserAnimation : MonoBehaviour
     public void TalkPointerDown()
     {
         this.GetComponent<DotMoveAnimation>().talkPanelObj.SetActive(false);
+    }
+
+    public void TalkButtonPointerDown()
+    {
+        talkBoardRoot.SetActive(!talkBoardRoot.active);
     }
 
     public void Update()
