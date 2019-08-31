@@ -49,10 +49,12 @@ public class PleaseItem
                 {5, new CharacterIconInfo("ONghigliaiconE", "E") },
             } },
             { 7, new Dictionary<int, CharacterIconInfo> {
-                {1, new CharacterIconInfo("ONghigliaiconA", "A")},
-                {2, new CharacterIconInfo("ONghigliaiconB", "B") },
-                {3, new CharacterIconInfo("ONghigliaiconC", "C") },
-                {4, new CharacterIconInfo("ONghigliaiconE", "E") },
+                {1, new CharacterIconInfo("ONdecerickiconA", "A")},
+                {2, new CharacterIconInfo("ONdecerickiconB", "B")},
+                {3, new CharacterIconInfo("ONdecerickiconC", "C")},
+                {4, new CharacterIconInfo("ONdecerickiconE", "E")},
+                {5, new CharacterIconInfo("ONdecerickiconF", "F")},
+
             } }
         };
     public static Dictionary<string, System.TimeSpan> PleaseTimeWaitGroupList = new Dictionary<string, System.TimeSpan>()
